@@ -1,4 +1,4 @@
-module model
+module my_model
     use iso_fortran_env, only: rk => real64, stderr => error_unit
     implicit none
 
@@ -54,4 +54,4 @@ contains
         end associate
     end function calc
 
-end module model
+end module my_model

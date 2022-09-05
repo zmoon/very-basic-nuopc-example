@@ -5,7 +5,7 @@ enable_language(Fortran)
 
 set(exe "prog")
 set(src
-    ../model.F90
+    ../my_model.f90
     driver.F90
     cap.F90
     app.F90

@@ -1,5 +1,5 @@
 program standalone
-    use model
+    use my_model
 
     ! These parameters are read from a config file,
     ! regardless of whether running standalone

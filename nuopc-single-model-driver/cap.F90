@@ -16,8 +16,8 @@ module MODEL
 
   use ESMF
   use NUOPC
-  use NUOPC_Model, &
-    modelSS    => SetServices
+  use NUOPC_Model, modelSS => SetServices
+  use my_model, only: my_read_config => read_config, my_calc => calc
 
   implicit none
 
