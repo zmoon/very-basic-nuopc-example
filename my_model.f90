@@ -5,7 +5,7 @@ module my_model
     private
     public calc, rk, config_type, read_config
 
-    character(*), parameter :: config_dir = "C:/Users/zmoon/OneDrive/w/ERT-ARL/esmf-example"
+    character(*), parameter :: config_dir = "../"
     character(*), parameter :: config_fn = "config.nml"
     character(*), parameter :: config_fp = config_dir // "/" // config_fn
 
@@ -28,7 +28,7 @@ contains
 
         ! Read namelist
         print *, config_fp
-        open (file="../config.nml", action="read", newunit=fu)
+        open (file=config_fp, action="read", newunit=fu)
         read (nml=PARAMS, unit=fu)
         if (rc /= 0) write (stderr, '("Error: invalid Namelist format")')
 
