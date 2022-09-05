@@ -16,7 +16,7 @@ program mainApp
 
   use ESMF
 
-  use driver, only: driver_SS => SetServices
+  use driver, only: driverSS => SetServices
 
   implicit none
 
@@ -46,7 +46,7 @@ program mainApp
     call ESMF_Finalize(endflag=ESMF_END_ABORT)
 
   ! -> SET DRIVER SERVICES
-  call ESMF_GridCompSetServices(drvComp, driver_SS, userRc=userRc, rc=rc)
+  call ESMF_GridCompSetServices(drvComp, driverSS, userRc=userRc, rc=rc)
   if (ESMF_LogFoundError(rcToCheck=rc, msg=ESMF_LOGERR_PASSTHRU, &
     line=__LINE__, &
     file=__FILE__)) &
