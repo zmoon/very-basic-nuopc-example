@@ -24,7 +24,19 @@ just test
 
 ### On NOAA Hera
 
-...
+We can follow the [hpc-stack usage instructions](https://github.com/NOAA-EMC/hpc-stack/wiki/Official-Installations) to get ESMF.
+
+*Below current as of 2022-09-06*
+
+```sh
+module use /scratch2/NCEPDEV/nwprod/hpc-stack/libs/hpc-stack/modulefiles/stack
+module load hpc/1.2.0
+module load hpc-intel/2022.1.2 hpc-impi/2022.1.2
+module load esmf/8.3.0
+```
+
+After this, `ESMFMKFILE` and other env vars (`env | grep ^ESMF`) are set:
+ESMF is ready to go.
 
 ### Installing on Ubuntu
 
