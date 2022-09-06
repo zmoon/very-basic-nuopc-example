@@ -26,7 +26,7 @@ module driver
   
     ! private module data --> ONLY PARAMETERS
     integer, parameter            :: stepCount = 5
-    real(ESMF_KIND_R8), parameter :: stepTime  = 30.D0  ! step time [s]
+    real(ESMF_KIND_R8), parameter :: stepTime  = 30._ESMF_KIND_R8  ! step time [s]
                                                         ! should be parent step
   
     public SetServices
@@ -40,6 +40,14 @@ module driver
       integer, intent(out) :: rc
   
       rc = ESMF_SUCCESS
+
+      ! Add custom variable
+      ! Example fd here: https://github.com/ESCOMP/NUOPCFieldDictionary/blob/master/fd.yaml
+      call NUOPC_FieldDictionaryAddEntry("the_best_variable_of_all", "1", rc=rc)
+      if (ESMF_LogFoundError(rcToCheck=rc, msg=ESMF_LOGERR_PASSTHRU, &
+        line=__LINE__, &
+        file=__FILE__)) &
+        return  ! bail out
   
       ! derive from NUOPC_Driver
       call NUOPC_CompDerive(driver, driverSS, rc=rc)
