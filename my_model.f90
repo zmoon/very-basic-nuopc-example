@@ -5,7 +5,7 @@ module my_model
     private
     public calc, rk, config_type, read_config
 
-    character(*), parameter :: config_dir = "../"
+    character(*), parameter :: config_dir = ".."
     character(*), parameter :: config_fn = "config.nml"
     character(*), parameter :: config_fp = config_dir // "/" // config_fn
 
@@ -27,7 +27,7 @@ contains
         namelist /PARAMS/ a, b
 
         ! Read namelist
-        print *, config_fp
+        print *, "reading " // config_fp
         open (file=config_fp, action="read", newunit=fu)
         read (nml=PARAMS, unit=fu)
         if (rc /= 0) write (stderr, '("Error: invalid Namelist format")')
