@@ -1,8 +1,8 @@
 # very-basic-nuopc-example
 
 The goal is to demonstrate how an external library ("model") can be used
-* [x] as a standalone program
-* [x] in a NUOPC "single model driver" framework
+* [x] in a standalone program
+* [x] in a NUOPC "single model driver" framework [^a]
 * [ ] in NUOPC, one-way coupling to a "data model"
 * [ ] NUOPC two-way coupling
 
@@ -10,6 +10,13 @@ Build and run the programs using [`just`](https://github.com/casey/just):
 ```bash
 just test
 ```
+
+
+[^a]: See the [SingleModelProto](https://github.com/esmf-org/nuopc-app-prototypes/tree/main/SingleModelProto/) example.
+
+## Background
+
+* [NUOPC landing page](https://earthsystemmodeling.org/nuopc/)
 
 ## Getting ESMF
 
@@ -21,7 +28,7 @@ just test
 
 ### Installing on Ubuntu
 
-*Tested on WSL2 Ubuntu 20.04.5 LTS*
+*Tested on WSL2 Ubuntu 20.04.5 LTS; based on [this guide](https://chenzhang.org/notes/gis/installing-esmf-on-ubuntu/)*
 
 Basics:
 ```bash
