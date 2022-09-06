@@ -192,11 +192,11 @@ module MODEL
       return  ! bail out
     ! Update values using the pointer
     do i = ftlb(1), ftub(1)
-      ! TODO: get `x` from Grid
+      ! TODO: get `x` from Grid intead of using integers?
       fp2d(i, :) = my_calc([(real(j, kind=ESMF_KIND_R8), j = ftlb(2), ftub(2))], my_config) &
         + advanceCount * 10
     enddo
-    print *, fp2d(1, 1:5)
+    print *, fp2d(1, 1:5)  ! TODO: get this in the log?
 
     ! Because of the way that the internal Clock was set by default,
     ! its timeStep is equal to the parent timeStep. As a consequence the
