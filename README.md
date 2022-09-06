@@ -38,9 +38,10 @@ module load esmf/8.3.0
 After this, `ESMFMKFILE` and other env vars (`env | grep ^ESMF`) are set:
 ESMF is ready to go.
 
-To get the `cmake` that goes with hpc-stack:
-```
-module load cmake/3.20.0
+Prepare to build:
+```sh
+module load cmake/3.20.1
+export FC=mpiifort
 ```
 
 ### Installing on Ubuntu
