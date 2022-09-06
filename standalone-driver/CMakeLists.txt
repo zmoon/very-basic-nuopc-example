@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(standalone-driver)
-enable_language(Fortran)
+project(standalone-driver
+  LANGUAGES Fortran)
 
 set(exe "prog")
 set(src
