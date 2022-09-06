@@ -157,6 +157,7 @@ module MODEL
     integer                     :: i, j
     integer, dimension(2)       :: ftlb, ftub, ftc  ! TODO: how to know/get rank to use (can't be `:`)?
     type(my_config_type) :: my_config
+    integer(ESMF_KIND_I8)       :: advanceCount
 
     rc = ESMF_SUCCESS
 
@@ -173,6 +174,9 @@ module MODEL
     ! TODO: attach this somewhere on init so doesn't happen every step?
     call my_read_config(my_config)
 
+    ! Get some Clock info
+    call ESMF_ClockGet(clock, advanceCount=advanceCount)
+
     ! Update our variable
     call ESMF_StateGet(exportState, "best", field, rc=rc)
     if (ESMF_LogFoundError(rcToCheck=rc, msg=ESMF_LOGERR_PASSTHRU, &
@@ -188,13 +192,11 @@ module MODEL
       return  ! bail out
     ! Update values using the pointer
     do i = ftlb(1), ftub(1)
-    !   do j = ftlb(2), ftub(2)
-        ! TODO: add clock delta or something to result
-        ! TODO: get `x` from Grid
-        fp2d(i, :) = my_calc([(real(j, kind=ESMF_KIND_R8), j = ftlb(2), ftub(2))], my_config)
-    !   enddo
+      ! TODO: get `x` from Grid
+      fp2d(i, :) = my_calc([(real(j, kind=ESMF_KIND_R8), j = ftlb(2), ftub(2))], my_config) &
+        + advanceCount * 10
     enddo
-    ! print *, fp2d(1, :)
+    print *, fp2d(1, 1:5)
 
     ! Because of the way that the internal Clock was set by default,
     ! its timeStep is equal to the parent timeStep. As a consequence the
