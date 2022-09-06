@@ -28,9 +28,9 @@ contains
 
         ! Read namelist
         print *, "reading " // config_fp
-        open (file=config_fp, action="read", newunit=fu)
-        read (nml=PARAMS, unit=fu)
-        if (rc /= 0) write (stderr, '("Error: invalid Namelist format")')
+        open (file=config_fp, action="read", newunit=fu, iostat=rc)
+        read (nml=PARAMS, unit=fu, iostat=rc)
+        if (rc /= 0) write (stderr, '("Error: invalid Namelist format, rc=", i0)') rc
 
         ! Set config
         config%a = a
