@@ -38,6 +38,11 @@ module load esmf/8.3.0
 After this, `ESMFMKFILE` and other env vars (`env | grep ^ESMF`) are set:
 ESMF is ready to go.
 
+To get the `cmake` that goes with hpc-stack:
+```
+module load cmake/3.20.0
+```
+
 ### Installing on Ubuntu
 
 *Tested on WSL2 Ubuntu 20.04.5 LTS; based on [this guide](https://chenzhang.org/notes/gis/installing-esmf-on-ubuntu/)*
