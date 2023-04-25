@@ -59,11 +59,13 @@ sudo apt install libnetcdf-dev libnetcdff-dev liblapack-dev libopenblas-dev
 ```
 
 Download the source code from [ESMF releases](https://github.com/esmf-org/esmf/releases).
+The unpacked directory, which contains `build`, `src`, etc., subdirectories,
+is what you use for `ESMF_DIR` below.
 
 Settings:
 ```bash
-export ESMF_DIR='set this'  # "the full pathname of the top level ESMF directory before building"
-export ESMF_INSTALL_PREFIX='set this if different from ESMF_DIR'
+export ESMF_DIR=/full/path/to/ESMF/dir
+# export ESMF_INSTALL_PREFIX=/set/if/different/from/ESMF_DIR
 
 export ESMF_LAPACK=netlib
 export ESMF_COMPILER=gfortran
