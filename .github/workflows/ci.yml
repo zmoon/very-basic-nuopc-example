@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Just
+        uses: extractions/setup-just@v2
+
+
+      - name: Install dependencies
+        run: sudo apt-get install -y libnetcdf-dev libnetcdff-dev
+          liblapack-dev libopenblas-dev
+
+      - name: Fetch pre-built ESMF
+        run: |
+          esmf=8.4.2-gcc-12-mpiuni
+
+          ESMF_DIR=$HOME/esmf/$esmf
+          mkdir -p $ESMF_DIR
+          cd $ESMF_DIR
+          wget https://github.com/zmoon/gha-esmf/releases/download/v0.0.5/${esmf}.tar.gz
+          tar xzvf ${esmf}.tar.gz
+
+          echo "ESMFMKFILE=${ESMF_DIR}/lib/libO/Linux.gfortran.64.mpiuni.default/esmf.mk" >> "$GITHUB_ENV"
+
+      - name: Build and test
+        run: |
+          export FC=gfortran-12
+          just test
