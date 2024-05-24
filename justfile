@@ -6,9 +6,9 @@ bd_nuopc1 := "_build_nuopc1"
 
 # Build all
 build:
-    cmake -S {{sd_standalone}} -B {{bd_standalone}}
+    cmake -S {{sd_standalone}} -B {{bd_standalone}} -DCMAKE_BUILD_TYPE=Debug
     cmake --build {{bd_standalone}}
-    cmake -S {{sd_nuopc1}} -B {{bd_nuopc1}}
+    cmake -S {{sd_nuopc1}} -B {{bd_nuopc1}} -DCMAKE_BUILD_TYPE=Debug
     cmake --build {{bd_nuopc1}}
 
 # Build and try running the executable
